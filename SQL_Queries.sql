@@ -1,4 +1,4 @@
-##Database: task3_sql
+Database: task3_sql
 
 Create Database
 CREATE DATABASE IF NOT EXISTS task3_sql;
