@@ -1,4 +1,4 @@
-Database: task3_sql
+##Database: task3_sql
 
 Create Database
 CREATE DATABASE IF NOT EXISTS task3_sql;
@@ -53,38 +53,38 @@ INSERT INTO Orders VALUES
 (1004,1,104,2,'2025-07-04'),
 (1005,5,105,5,'2025-07-05');
 
-SELECT
+--SELECT
 SELECT * FROM Customers;
 SELECT * FROM Products;
 SELECT * FROM Orders;
 
 
-WHERE
+--WHERE
 SELECT *
 FROM Customers
 WHERE Country='India';
 
 
-ORDER BY
+--ORDER BY
 SELECT *
 FROM Products
 ORDER BY Price DESC;
 
-GROUP BY
+--GROUP BY
 SELECT Category,
 AVG(Price) AS AveragePrice
 FROM Products
 GROUP BY Category;
 
 
-Aggregate Functions
+--Aggregate Functions
 SELECT SUM(Quantity) AS TotalQuantity
 FROM Orders;
 
 SELECT AVG(Price) AS AveragePrice
 FROM Products;
 
-INNER JOIN
+--INNER JOIN
 SELECT
 Customers.CustomerName,
 Products.ProductName,
@@ -95,7 +95,7 @@ ON Orders.CustomerID=Customers.CustomerID
 INNER JOIN Products
 ON Orders.ProductID=Products.ProductID;
 
-LEFT JOIN
+--LEFT JOIN
 SELECT
 Customers.CustomerName,
 Orders.OrderID
@@ -103,7 +103,7 @@ FROM Customers
 LEFT JOIN Orders
 ON Customers.CustomerID=Orders.CustomerID;
 
-RIGHT JOIN
+--RIGHT JOIN
 SELECT
 Customers.CustomerName,
 Orders.OrderID
@@ -112,7 +112,7 @@ RIGHT JOIN Orders
 ON Customers.CustomerID=Orders.CustomerID;
 
 
-Subquery
+--Subquery
 SELECT *
 FROM Products
 WHERE Price >
@@ -121,7 +121,7 @@ SELECT AVG(Price)
 FROM Products
 );
 
-View
+--View
 CREATE OR REPLACE VIEW CustomerOrders AS
 SELECT
 Customers.CustomerName,
@@ -136,21 +136,21 @@ ON Orders.ProductID=Products.ProductID;
 SELECT * FROM CustomerOrders;
 
 
-Index
+--Index
 CREATE INDEX idx_customer
 ON Orders(CustomerID);
 
 SHOW INDEX FROM Orders;
 
 
-Additional Queries
-Highest priced product
+--Additional Queries
+--Highest priced product
 SELECT *
 FROM Products
 ORDER BY Price DESC
 LIMIT 1;
 
-Total Orders by Customer
+--Total Orders by Customer
 SELECT
 Customers.CustomerName,
 COUNT(Orders.OrderID) AS TotalOrders
@@ -159,7 +159,7 @@ LEFT JOIN Orders
 ON Customers.CustomerID=Orders.CustomerID
 GROUP BY Customers.CustomerName;
 
-Revenue of each Order
+--Revenue of each Order
 SELECT
 Orders.OrderID,
 Products.ProductName,
@@ -170,7 +170,7 @@ FROM Orders
 INNER JOIN Products
 ON Orders.ProductID=Products.ProductID;
 
-Total Revenue
+--Total Revenue
 SELECT
 SUM(Orders.Quantity * Products.Price) AS TotalRevenue
 FROM Orders
